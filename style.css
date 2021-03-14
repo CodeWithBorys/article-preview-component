@@ -22,6 +22,7 @@ body {
   position: relative;
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
+  overflow: hidden;
 }
 
 .card {
@@ -82,6 +83,7 @@ h2 {
   position: absolute;
   bottom: 35px;
   right: 40px;
+  z-index: 20;
 }
 
 .share__btn {
@@ -102,11 +104,15 @@ h2 {
   transform: scale(0.95);
 }
 
-.share__btn.active {
+body.active .share__btn {
   box-shadow: 0 1px 3px rgb(0 0 0 / 40%);
 }
 
-.share__block {
+.hidden {
+  display: none;
+}
+
+body.active .share__block {
   position: absolute;
   background: var(--dark-blue);
   left: 50%;
@@ -116,6 +122,15 @@ h2 {
   padding: 15px 20px;
   border-radius: 10px;
   box-shadow: 0 3px 8px rgb(0 0 0 / 40%);
+  z-index: 100;
+}
+
+body.active .overlay {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 
 .share__block::after {
@@ -147,14 +162,11 @@ h2 {
   transform: scale(1.2);
 }
 
-.hidden {
-  display: none;
-}
-
 .attribution {
   position: absolute;
   bottom: 20px;
   color: var(--blue);
+  z-index: 2;
 }
 .attribution a {
   text-decoration: none;
